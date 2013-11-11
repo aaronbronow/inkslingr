@@ -45,3 +45,5 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem "goodreads", "~> 0.3.0"
+
+gem "twitter", "~> 4.8.1"
