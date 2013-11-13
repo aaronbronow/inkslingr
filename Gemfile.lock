@@ -130,6 +130,7 @@ DEPENDENCIES
   goodreads (~> 0.3.0)
   jbuilder (~> 1.2)
   jquery-rails
+  oauth
   pg
   rails (= 4.0.0)
   sass-rails (~> 4.0.0)

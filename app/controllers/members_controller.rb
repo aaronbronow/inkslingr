@@ -1,6 +1,25 @@
+require 'oauth'
+
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
+  def self.consumer
+    # The readkey and readsecret below are the values you get during registration
+    OAuth::Consumer.new('6Usy4SZzhXqma4N3DwybkA', 'MmTuxaXl9c8Q4beCKUWmjZNiVRhFY7zgbkt6RbBbA',
+      { :site=>"http://api.twitter.com",
+        :scheme => :header 
+      })
+  end
+  
+  def new
+    @request_token = MembersController.consumer.get_request_token(:oauth_callback => "http://www.inkslingr.com/auth/twitter")
+    session[:request_token] = @request_token.token
+    session[:request_token_secret] = @request_token.secret
+    # Send to twitter.com to authorize
+    redirect_to @request_token.authorize_url
+    return
+  end
+  
   # GET /members
   # GET /members.json
   def index
@@ -10,11 +29,6 @@ class MembersController < ApplicationController
   # GET /members/1
   # GET /members/1.json
   def show
-  end
-
-  # GET /members/new
-  def new
-    @member = Member.new
   end
 
   # GET /members/1/edit
