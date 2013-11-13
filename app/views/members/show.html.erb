@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Twitter:</strong>
+  <%= @member.twitter_id %>
+</p>
+
+<p>
+  <strong>Screen name:</strong>
+  <%= @member.screen_name %>
+</p>
+
+<p>
+  <strong>Token:</strong>
+  <%= @member.token %>
+</p>
+
+<p>
+  <strong>Secret:</strong>
+  <%= @member.secret %>
+</p>
+
+<p>
+  <strong>Profile image url:</strong>
+  <%= @member.profile_image_url %>
+</p>
+
+<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'Back', members_path %>
