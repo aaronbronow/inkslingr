@@ -10,8 +10,8 @@ class WelcomeController < ApplicationController
     @author_link = author.link
     
     twitter = Twitter::Client.new(
-      :oauth_token => '117190492-4jJksgZp5BggKrVMxJ8I8pyCQJPACJeXwBkbjlRJ',
-      :oauth_token_secret => '1vE0zf4Gx6PZpc1Fbv9MRq2eV5TnskujhmHHjDAMH5Eiy'
+      :oauth_token => '117190492-uyi7pm5Gfq24pOwREFTYqgqE0onE9Zesmi7lpqIM',
+      :oauth_token_secret => 'FnxsYmz6kI5e8LoCnr1Go9TYChSmVgPnHQNCtT4Psepy8'
     )
     
     @results = twitter.user_search('Neal Stephenson', :count => 1, :result_type => 'popular')
