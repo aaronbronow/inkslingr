@@ -1,5 +1,5 @@
 class Member < ActiveRecord::Base
   def to_param 
-    screen_Name 
+    screen_name 
   end
 end
