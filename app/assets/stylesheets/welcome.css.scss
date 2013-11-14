@@ -2,6 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-header.grid-container {
-	background-color: #EDEEEE;
+body {
+	margin: 0px 0px;
+	background-color: #CADD21;
+}
+
+.hero, .hero-bg {
+	background-color: #000;
+}
+
+.hero-bg
+{
+	margin-top: 100px;
+	width: 100%;
+}
+
+.hero .right-side a#sign-in-with-twitter
+{
+	padding-top: 160px;
+	width: 158px;
+	display: block;
+	margin: auto auto;
 }
