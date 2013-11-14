@@ -20,6 +20,10 @@ class MembersController < ApplicationController
     return
   end
   
+  def twitter
+    @members = Member.all
+  end
+  
   # GET /members
   # GET /members.json
   def index

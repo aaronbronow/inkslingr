@@ -7,6 +7,8 @@ Inkslingr::Application.routes.draw do
 
   resources :members
 
+  get 'auth/twitter' => 'auth#twitter'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
