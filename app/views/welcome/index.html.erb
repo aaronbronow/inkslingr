@@ -1,6 +1,25 @@
-<h2>Hello World</h2>
-<p>
-  The time is now: <%= Time.now %>
-</p>
-<p><%= @message %> <a href="<%= @author_link %>">Neal Stephenson</a></p>
-<p><a href="members/new"><img src="https://dev.twitter.com/sites/default/files/images_documentation/sign-in-with-twitter-gray.png"/></a>
+<header>
+	<div class="grid-container">
+		<div class="grid-80">
+			<h2>Hello World</h2>
+		</div>
+		<div class="grid-20">
+			<p><%= @message %> <a href="<%= @author_link %>">Neal Stephenson</a></p>
+		</div>
+	</div>
+</header>
+
+<div class="grid-container">
+    <div class="grid-33">
+        <div class="content">
+			<p>
+			  The time is now: <%= Time.now %>
+			</p>
+		</div>
+    </div>
+    <div class="grid-66">
+        <div class="content">
+			<a href="members/new"><img src="https://dev.twitter.com/sites/default/files/images_documentation/sign-in-with-twitter-gray.png"/>
+		</div>
+    </div>
+</div>
