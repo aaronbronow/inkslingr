@@ -15,6 +15,7 @@ class MembersController < ApplicationController
     @request_token = MembersController.consumer.get_request_token(:oauth_callback => "http://www.inkslingr.com/auth/twitter")
     session[:request_token] = @request_token.token
     session[:request_token_secret] = @request_token.secret
+    session[:request_token_object] = @request_token
     # Send to twitter.com to authorize
     redirect_to @request_token.authorize_url
     return

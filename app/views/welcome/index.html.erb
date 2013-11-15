@@ -4,7 +4,9 @@
 			<h2>Hello World</h2>
 		</div>
 		<div class="grid-20">
-			<p><%= @message %> <a href="<%= @author_link %>">Neal Stephenson</a></p>
+			<% if @twitter_user_verified %>
+				<p><%= @message %> <a href="<%= @twitter_user.url %>"><%= @twitter_user.name %></a></p>
+			<% end %>
 		</div>
 	</div>
 </header>
@@ -19,7 +21,11 @@
 	    <div class="grid-50">
 	        <div class="content right-side">
 				<a href="members/new" id="sign-in-with-twitter"><img src="https://dev.twitter.com/sites/default/files/images_documentation/sign-in-with-twitter-gray.png"/>
+				</a>
+				<%= @goodreads %>
 			</div>
 	    </div>
 	</div>
 </div>
+
+<%= debug @twitter_user %>

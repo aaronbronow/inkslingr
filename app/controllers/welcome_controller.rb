@@ -9,6 +9,20 @@ class WelcomeController < ApplicationController
     @message = "Hello, "
     @author_link = author.link
     
+    if session.key? :member_secret
+      @goodreads = 'good reads ready'
+      twitter = Twitter::Client.new(:oauth_token => session[:member_access_token], :oauth_token_secret => session[:member_secret])
+      
+      begin
+        @twitter_user = twitter.verify_credentials
+      rescue Exception => e
+        logger.debug e
+      end
+      
+      unless @twitter_user.nil?
+        @twitter_user_verified = true
+      end
+    end
     #twitter = Twitter::Client.new(
     #  :oauth_token => '117190492-uyi7pm5Gfq24pOwREFTYqgqE0onE9Zesmi7lpqIM',
     #  :oauth_token_secret => 'FnxsYmz6kI5e8LoCnr1Go9TYChSmVgPnHQNCtT4Psepy8'
