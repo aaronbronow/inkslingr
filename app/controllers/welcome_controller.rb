@@ -1,4 +1,6 @@
 class WelcomeController < ApplicationController
+  include WelcomeHelper
+  
   def index
     # testing good reads connection
     client = Goodreads::Client.new(:api_key => 'QTFfEaugOxPvTIrzGy0TQ')
@@ -8,9 +10,9 @@ class WelcomeController < ApplicationController
     
     @message = "Hello, "
     @author_link = author.link
+    @goodreads = is_returning_twitter_user()
     
     if session.key? :member_secret
-      @goodreads = 'good reads ready'
       
       ### TODO adwb: move this to auth controller
       twitter = Twitter::Client.new(:oauth_token => session[:member_access_token], :oauth_token_secret => session[:member_secret])
@@ -28,6 +30,11 @@ class WelcomeController < ApplicationController
             :secret => session[:member_secret],
             :profile_image_url => @twitter_user.profile_image_url)
           @member.save
+          
+          cookies[:twitter_token] = session[:member_access_token]
+          cookies[:twitter_secret] = session[:member_secret]
+          cookies[:twitter_id] = @twitter_user.id
+          
         end
         
       rescue Exception => e

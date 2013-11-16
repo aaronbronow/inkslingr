@@ -7,6 +7,7 @@ Inkslingr::Application.routes.draw do
 
   resources :members
 
+  get 'auth/sign-in-with-twitter' => 'auth#sign_in_with_twitter'
   get 'auth/twitter' => 'auth#twitter'
 
   # Example of regular route:
