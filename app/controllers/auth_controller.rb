@@ -32,6 +32,32 @@ class AuthController < ApplicationController
     session[:member_access_token] = @access_token.token
     session[:member_secret] = @access_token.secret
     
+    twitter = Twitter::Client.new(:oauth_token => session[:member_access_token], :oauth_token_secret => session[:member_secret])
+    
+    begin
+      @twitter_user = twitter.verify_credentials
+      
+      @member = Member.find_by_twitter_id(@twitter_user.id)
+      
+      if @member == nil
+        logger.debug 'adding new user'
+        @member = Member.new(:twitter_id => @twitter_user.id, 
+          :screen_name => @twitter_user.screen_name,
+          :token => session[:member_access_token],
+          :secret => session[:member_secret],
+          :profile_image_url => @twitter_user.profile_image_url)
+        @member.save
+        
+        cookies[:twitter_token] = session[:member_access_token]
+        cookies[:twitter_secret] = session[:member_secret]
+        cookies[:twitter_id] = @twitter_user.id
+        
+      end
+      
+    rescue Exception => e
+      logger.debug e
+    end
+    
     redirect_to root_url
   end
 end

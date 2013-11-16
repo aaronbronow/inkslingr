@@ -4,8 +4,13 @@
 			<h2>Hello World</h2>
 		</div>
 		<div class="grid-20">
-			<% if @twitter_user_verified %>
-				<p><%= @message %> <a href="<%= @twitter_user.url %>"><%= @twitter_user.name %></a></p>
+			<% if is_returning_twitter_user() %>
+				<span><%= @message %> 
+					<a id="userbadge" href="auth/sign-out">
+						<%= @member.screen_name %>
+						<img src="<%= @member.profile_image_url %>" />
+					</a>
+				</span>
 			<% end %>
 		</div>
 	</div>
@@ -28,4 +33,4 @@
 	</div>
 </div>
 
-<%= debug @twitter_user %>
+<%= debug @member %>
