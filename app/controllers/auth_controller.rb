@@ -51,7 +51,12 @@ class AuthController < ApplicationController
         cookies[:twitter_token] = session[:member_access_token]
         cookies[:twitter_secret] = session[:member_secret]
         cookies[:twitter_id] = @twitter_user.id
+      else
+        logger.debug 'returning user authenticating again'
         
+        cookies[:twitter_token] = session[:member_access_token]
+        cookies[:twitter_secret] = session[:member_secret]
+        cookies[:twitter_id] = @twitter_user.id
       end
       
     rescue Exception => e
@@ -62,6 +67,12 @@ class AuthController < ApplicationController
   end
   
   def sign_out
-    raise 'Not yet implemented'
+    cookies.delete :twitter_token
+    cookies.delete :twitter_secret
+    cookies.delete :twitter_id
+    session.delete :member_access_token
+    session.delete :member_secret
+    
+    redirect_to root_url
   end
 end
