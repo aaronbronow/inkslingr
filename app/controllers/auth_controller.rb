@@ -60,4 +60,8 @@ class AuthController < ApplicationController
     
     redirect_to root_url
   end
+  
+  def sign_out
+    raise 'Not yet implemented'
+  end
 end

@@ -9,6 +9,7 @@ Inkslingr::Application.routes.draw do
 
   get 'auth/sign-in-with-twitter' => 'auth#sign_in_with_twitter'
   get 'auth/twitter' => 'auth#twitter'
+  get 'auth/sign-out' => 'auth#sign_out'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
