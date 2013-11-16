@@ -11,10 +11,25 @@ class WelcomeController < ApplicationController
     
     if session.key? :member_secret
       @goodreads = 'good reads ready'
+      
+      ### TODO adwb: move this to auth controller
       twitter = Twitter::Client.new(:oauth_token => session[:member_access_token], :oauth_token_secret => session[:member_secret])
       
       begin
         @twitter_user = twitter.verify_credentials
+        
+        @member = Member.find_by_twitter_id(@twitter_user.id)
+        
+        if @member == nil
+          logger.debug 'adding new user'
+          @member = Member.new(:twitter_id => @twitter_user.id, 
+            :screen_name => @twitter_user.screen_name,
+            :token => session[:member_access_token],
+            :secret => session[:member_secret],
+            :profile_image_url => @twitter_user.profile_image_url)
+          @member.save
+        end
+        
       rescue Exception => e
         logger.debug e
       end

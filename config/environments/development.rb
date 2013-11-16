@@ -26,15 +26,4 @@ Inkslingr::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
-  
-  # Set to :debug to see everything in the log.
-  config.log_level = :debug
-
-  # Prepend all log lines with the following tags.
-  # config.log_tags = [ :subdomain, :uuid ]
-
-  # Use a different logger for distributed setups.
-  # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
-  
-  config.logger = Logger.new(STDOUT)
 end
