@@ -49,3 +49,5 @@ gem "goodreads", "~> 0.3.0"
 gem "twitter", "~> 4.8.1"
 
 gem "oauth"
+
+gem 'newrelic_rpm'
