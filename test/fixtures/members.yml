@@ -1,5 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
+aaronbronow:
+  twitter_id: 117190492
+  screen_name: aaronbronow
+  token: '117190492-rtUf411JIbl1pP1LVUuNnOZK5OlGlIhAi9XRpCWv'
+  secret: 'sUqHvwchztYPs92r0nUe7WLG1pfgFufgg1q20ccJp5WmW'
+  profile_image_url: 'http://pbs.twimg.com/profile_images/378800000723104664/c080e47f3ffdf8914f55b2226be46b5f_normal.jpeg'
+
 one:
   twitter_id: 1
   screen_name: MyString
@@ -8,7 +15,7 @@ one:
   profile_image_url: MyString
 
 two:
-  twitter_id: 1
+  twitter_id: 2
   screen_name: MyString
   token: MyString
   secret: MyString

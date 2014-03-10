@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Id</th>
       <th>Twitter</th>
       <th>Screen name</th>
       <th>Token</th>
@@ -17,6 +18,7 @@
   <tbody>
     <% @members.each do |member| %>
       <tr>
+        <td><%= member.id%></td>
         <td><%= member.twitter_id %></td>
         <td><%= member.screen_name %></td>
         <td><%= member.token %></td>

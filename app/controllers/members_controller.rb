@@ -15,6 +15,10 @@ class MembersController < ApplicationController
   # GET /members/1/edit
   def edit
   end
+  
+  def new
+    @member = Member.new
+  end
 
   # POST /members
   # POST /members.json
