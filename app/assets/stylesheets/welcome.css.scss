@@ -7,24 +7,29 @@ body {
 	background-color: #CADD21;
 }
 
-.hero, .hero-bg {
+.jumbotron {
 	background-color: #000;
 }
 
-.hero-bg
+.center
 {
-	margin-top: 100px;
-	width: 100%;
+  position: relative;
+  left: 50%;
 }
 
-.hero .right-side a#sign-in-with-twitter, a#sign-in-with-goodreads
+.middle
 {
-	padding-top: 160px;
-	width: 158px;
-	display: block;
-	margin: auto auto;
+  position: relative;
+  top: 50%;
+}
+
+#sign-in-with-twitter
+{
+  margin-left: -79px;
+  margin-top: -14px;
 }
 
 #userbadge {
 	display: inline-block;
 }
+

@@ -16,33 +16,58 @@
 	</div>
 </header>
 
-<div class="hero-bg">
-	<div class="hero grid-container">
-	    <div class="grid-50">
-			<% unless is_returning_twitter_user() %>
-	        <div class="content">
-				<img src="http://farm3.staticflickr.com/2170/1781295679_9a92211e24.jpg">
-			</div>
-			<% else %>
-			<div class="content">
-				<img src="http://farm4.staticflickr.com/3285/2931121522_eac0c5d678.jpg">
-			</div>
-			<% end %>
-	    </div>
-	    <div class="grid-50">
-	        <div class="content right-side">
-				<% unless is_returning_twitter_user() %>
-					<a href="auth/sign-in-with-twitter" id="sign-in-with-twitter"><img src="https://dev.twitter.com/sites/default/files/images_documentation/sign-in-with-twitter-gray.png"/>
-					</a>
-				<% else %>
-					<a href="auth/sign-in-with-goodreads" id="sign-in-with-goodreads">
-					<img src="https://djgho45yw78yg.cloudfront.net/assets/badge/goodreads-login-button-e4993e896d7653e58afbc8bc089b140a.png"/>
-					</a>
-				<% end %>
+<div class="jumbotron">
+	<div class="container">
+    <div class="row">
+  	  <div class="col-md-6">
+  			<% unless is_returning_twitter_user() %>
+  	        <div class="content">
+  				<img src="http://farm3.staticflickr.com/2170/1781295679_9a92211e24.jpg">
+  			</div>
+  			<% else %>
+  			<div class="content">
+  				<img src="http://farm4.staticflickr.com/3285/2931121522_eac0c5d678.jpg">
+  			</div>
+  			<% end %>
+  	    </div>
+  	    <div class="col-md-6" style="height: 375px">
+  	      <div class="content center middle">
+  				<% unless is_returning_twitter_user() %>
+  					<a href="auth/sign-in-with-twitter" id="sign-in-with-twitter"><img src="https://dev.twitter.com/sites/default/files/images_documentation/sign-in-with-twitter-gray.png"/>
+  					</a>
+  				<% else %>
+  					<a href="auth/sign-in-with-goodreads" id="sign-in-with-goodreads">
+  					<img src="https://djgho45yw78yg.cloudfront.net/assets/badge/goodreads-login-button-e4993e896d7653e58afbc8bc089b140a.png"/>
+  					</a>
+  				<% end %>
 				
-			</div>
-	    </div>
+  			  </div>
+  	    </div>
+      </div>
+    </div>
 	</div>
+</div>
+<div class="container">
+  <div class="row">
+           <div class="col-md-4">
+           <h2>Box Number 1</h2>
+           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+           <p><a class="btn" href="#">Click meeee &raquo;</a></p>
+           </div><!-- .span4 -->
+   
+           <div class="col-md-4">
+                   <h2>Box Number 2</h2>
+           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+           <p><a class="btn" href="#">Click meeee &raquo;</a></p>
+           </div><!-- .span4 -->
+   
+           <div class="col-md-4">
+                   <h2>Box Number 3</h2>
+           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+           <p><a class="btn" href="#">Click meeee &raquo;</a></p>
+           </div><!-- .span4 -->
+   
+   </div>
 </div>
 
 <!-- <%= debug @member %> -->
