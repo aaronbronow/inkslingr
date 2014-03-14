@@ -3,10 +3,10 @@ require 'oauth'
 class AuthController < ApplicationController
   def self.twitter_consumer
     # The readkey and readsecret below are the values you get during registration
-    OAuth::Consumer.new('6Usy4SZzhXqma4N3DwybkA', 'MmTuxaXl9c8Q4beCKUWmjZNiVRhFY7zgbkt6RbBbA',
-      { :site=>"http://api.twitter.com",
-        :scheme => :header 
-      })
+    OAuth::Consumer.new('B3MWC2rjPFzNflQISO9QLQ', 
+      'xXaXg5UeZjOF1Et2xIY2rTgAPjjvZ4j9ku59al0',
+      :site => "https://api.twitter.com"
+      )
   end
   
   def sign_in_with_twitter
@@ -29,8 +29,12 @@ class AuthController < ApplicationController
     
     @access_token = @request_token.get_access_token(:oauth_verifier => params[:oauth_verifier])
     
-    session[:member_access_token] = @access_token.token
-    session[:member_secret] = @access_token.secret
+    logger.debug @access_token.inspect
+    
+    # session[:member_access_token] = @access_token.token
+    # session[:member_secret] = @access_token.secret
+    session[:member_access_token] = '117190492-3xzwgq4ukShk8JrAVht9ZEDRATv9nxeUCu93wBTs'
+    session[:member_secret] = 'W71DYmnWHxBYVORkexI3e8jzvH3tdmiIukQN7GH2gGEqo'
     
     twitter = Twitter::Client.new(:oauth_token => session[:member_access_token], :oauth_token_secret => session[:member_secret])
     
