@@ -36,7 +36,12 @@ class AuthController < ApplicationController
     session[:member_access_token] = '117190492-3xzwgq4ukShk8JrAVht9ZEDRATv9nxeUCu93wBTs'
     session[:member_secret] = 'W71DYmnWHxBYVORkexI3e8jzvH3tdmiIukQN7GH2gGEqo'
     
-    twitter = Twitter::Client.new(:oauth_token => session[:member_access_token], :oauth_token_secret => session[:member_secret])
+    twitter = Twitter::REST::Client.new do |config|
+      config.consumer_key = 'B3MWC2rjPFzNflQISO9QLQ'
+      config.consumer_secret = 'xXaXg5UeZjOF1Et2xIY2rTgAPjjvZ4j9ku59al0'
+      config.access_token        = session[:member_access_token]
+      config.access_token_secret = session[:member_secret]
+    end
     
     begin
       @twitter_user = twitter.verify_credentials
