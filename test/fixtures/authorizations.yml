@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  provider: MyString
+  user_id: 
+  auth_hash: MyString
+  RAILS_ENV=development: MyString
+
+two:
+  provider: MyString
+  user_id: 
+  auth_hash: MyString
+  RAILS_ENV=development: MyString
