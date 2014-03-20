@@ -48,6 +48,10 @@ gem "goodreads"
 
 gem "twitter"
 
-gem "oauth"
+gem "multi_xml"
+
+gem "omniauth-twitter"
+
+gem "omniauth-goodreads"
 
 gem 'newrelic_rpm'

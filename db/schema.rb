@@ -11,16 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131113195223) do
+ActiveRecord::Schema.define(version: 20140320025249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "members", force: true do |t|
-    t.integer  "twitter_id"
-    t.string   "screen_name"
+  create_table "authorizations", force: true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "member_id"
     t.string   "token"
     t.string   "secret"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "members", force: true do |t|
+    t.string   "screen_name"
     t.string   "profile_image_url"
     t.datetime "created_at"
     t.datetime "updated_at"

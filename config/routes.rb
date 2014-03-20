@@ -1,4 +1,5 @@
 Inkslingr::Application.routes.draw do
+  get "sessions/create"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -7,9 +8,11 @@ Inkslingr::Application.routes.draw do
 
   resources :members
 
-  get 'auth/sign-in-with-twitter' => 'auth#sign_in_with_twitter'
-  get 'auth/twitter' => 'auth#twitter'
-  get 'auth/sign-out' => 'auth#sign_out'
+  # get 'auth/sign-in-with-twitter' => 'auth#sign_in_with_twitter'
+  # get 'auth/twitter' => 'auth#twitter'
+  # get 'auth/sign-out' => 'auth#sign_out'
+  
+  get '/auth/:provider/callback', to: 'sessions#create'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

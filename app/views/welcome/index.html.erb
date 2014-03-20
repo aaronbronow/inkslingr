@@ -4,11 +4,11 @@
 			<h2>Hello World</h2>
 		</div>
 		<div class="grid-20">
-			<% if is_returning_twitter_user() %>
-				<span><%= @message %> 
+			<% if is_authorized_user() %>
+				<span> 
 					<a id="userbadge" href="auth/sign-out" title="Sign out">
-						<%= @member.screen_name %>
-						<img src="<%= @member.profile_image_url %>" />
+						<%= @twitter.screen_name %>
+						<img src="<%= @twitter.profile_image_url %>" />
 					</a>
 				</span>
 			<% end %>
@@ -33,10 +33,10 @@
   	    <div class="col-md-6" style="height: 375px">
   	      <div class="content center middle">
   				<% unless is_returning_twitter_user() %>
-  					<a href="auth/sign-in-with-twitter" id="sign-in-with-twitter"><img src="https://dev.twitter.com/sites/default/files/images_documentation/sign-in-with-twitter-gray.png"/>
+  					<a href="auth/twitter" id="sign-in-with-twitter"><img src="https://dev.twitter.com/sites/default/files/images_documentation/sign-in-with-twitter-gray.png"/>
   					</a>
   				<% else %>
-  					<a href="auth/sign-in-with-goodreads" id="sign-in-with-goodreads">
+  					<a href="auth/goodreads" id="sign-in-with-goodreads">
   					<img src="https://djgho45yw78yg.cloudfront.net/assets/badge/goodreads-login-button-e4993e896d7653e58afbc8bc089b140a.png"/>
   					</a>
   				<% end %>
@@ -70,4 +70,6 @@
    </div>
 </div>
 
-<!-- <%= debug @member %> -->
+<%= debug @author %>
+<%= debug @shelf %>
+<%= debug is_returning_twitter_user() %>
