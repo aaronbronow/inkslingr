@@ -33,9 +33,20 @@ class WelcomeController < ApplicationController
       
       goodreads = Goodreads::Client.new(:api_key => ENV['GOODREADS_KEY'], :api_secret => ENV['GOODREADS_SECRET'])
       
-      @author = goodreads.author_by_name('Neal Stephenson')
+      # @author = goodreads.author_by_name('Neal Stephenson')
       
-      @shelf = goodreads.shelf(goodreads_auth.uid, 'all')
+      shelf = goodreads.shelf(goodreads_auth.uid, '')
+      total = shelf.total
+      pages = (shelf.total / shelf.books.count).ceil
+      
+      @authors = []
+      (1..pages).each do |page|
+        shelf = goodreads.shelf(goodreads_auth.uid, '', {:page => page})
+        
+        shelf.books.each do |book|
+          @authors << book.book.authors.author.name
+        end
+      end
       
     end
     
