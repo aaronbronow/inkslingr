@@ -1,6 +1,12 @@
 class WelcomeController < ApplicationController
   include WelcomeHelper
   
+  def reset
+    reset_session
+    
+    redirect_to action: 'index'
+  end
+  
   def index
     # # testing good reads connection
 #     client = Goodreads::Client.new(:api_key => 'QTFfEaugOxPvTIrzGy0TQ')
@@ -21,6 +27,7 @@ class WelcomeController < ApplicationController
       
       twitter_auth = Authorization.find_by_id(session[:twitter])
       goodreads_auth = Authorization.find_by_id(session[:goodreads])
+      @member = twitter_auth.member
       
       twitter = Twitter::REST::Client.new do |config|
         config.consumer_key        = ENV['TWITTER_KEY']
@@ -30,23 +37,47 @@ class WelcomeController < ApplicationController
       end
     
       @twitter = twitter.verify_credentials
+      @member.screen_name = @twitter.screen_name
+      # @member.profile_image_url = @twitter.profile_image_url
+      @member.save
       
       goodreads = Goodreads::Client.new(:api_key => ENV['GOODREADS_KEY'], :api_secret => ENV['GOODREADS_SECRET'])
       
       # @author = goodreads.author_by_name('Neal Stephenson')
       
-      shelf = goodreads.shelf(goodreads_auth.uid, '')
-      total = shelf.total
-      pages = (shelf.total / shelf.books.count).ceil
+      # shelf = goodreads.shelf(goodreads_auth.uid, '')
+      # total = shelf.total
+      # pages = (shelf.total / shelf.books.count).ceil
+      # 
+      # authors_names = Hash.new
+      # (1..pages).each do |page|
+      #   shelf = goodreads.shelf(goodreads_auth.uid, '', {:page => page})
+      #   
+      #   shelf.books.each do |book|
+      #     authors_names[book.book.authors.author.name] = book.book.authors.author.name
+      #   end
+      # end
       
       @authors = []
-      (1..pages).each do |page|
-        shelf = goodreads.shelf(goodreads_auth.uid, '', {:page => page})
-        
-        shelf.books.each do |book|
-          @authors << book.book.authors.author.name
-        end
-      end
+      
+      # Author.transaction do
+      #   authors_names.keys.each do |author_name|
+      #     twitter_user = twitter.user_search(author_name, {:count => 1}).pop
+      #     screen_name = ''
+      #     unless twitter_user.nil?
+      #       screen_name = twitter_user.screen_name
+      #     end
+      #     author = {
+      #       name: author_name,
+      #       screen_name: screen_name
+      #     }
+      #     @authors << author
+      #   
+      #     Author.create(name: author_name, screen_name: screen_name, member: @member)
+      #   end
+      # end
+      
+      @authors = Author.where(member: @member)
       
     end
     

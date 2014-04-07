@@ -14,9 +14,10 @@ class SessionsController < ApplicationController
       twitter.member = member
       twitter.save
       
-      goodreads = Authorization.find_by_id(session[:goodreads])
+      # goodreads = Authorization.find_by_id(session[:goodreads])
+      goodreads = auth
       goodreads.member = member
-      goodreads.save    
+      goodreads.save
     end
     
     redirect_to root_url
