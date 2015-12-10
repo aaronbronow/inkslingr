@@ -33,3 +33,4 @@ tmp
 .yardoc
 _yardoc
 doc/
+.vagrant

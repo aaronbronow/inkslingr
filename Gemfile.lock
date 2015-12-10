@@ -198,6 +198,3 @@ DEPENDENCIES
   sqlite3
   twitter
   uglifier
-
-BUNDLED WITH
-   1.10.5
